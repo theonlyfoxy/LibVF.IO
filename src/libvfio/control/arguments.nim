@@ -330,7 +330,7 @@ func qemuLaunch*(cfg: Config, uuid: string,
     of isLookingGlass:
       # Create device for Looking Glass
       result.args &= "-device"
-      result.args &= "ivshmem-plain,id=shmem0,memdev=ivshmem_kvmfr"
+      result.args &= "ivshmem-plain,id=shmem0,memdev=ivshmem_kvmfr,master=on"
 
       # Create Looking Glass IVSHMEM object
       result.args &= "-object"
@@ -339,7 +339,7 @@ func qemuLaunch*(cfg: Config, uuid: string,
 
       # Create device for Scream
       result.args &= "-device"
-      result.args &= "ivshmem-plain,id=shmem1,memdev=ivshmem_kvmsr"
+      result.args &= "ivshmem-plain,id=shmem1,memdev=ivshmem_kvmsr,master=on"
 
       # Create Scream IVSHMEM object
       result.args &= "-object"
